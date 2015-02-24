@@ -1,15 +1,20 @@
  <h1><%= @actor.name %></h1>
 
-
-collection_select
-
+<!-- 
+collection_select -->
+<%= form_for @actor do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "Update" %>
+<% end %>
 
 <p>
-<%= link_to "Add another movie #{@actor.name} played in", new_movie_path %>
+Add another movie <%= @actor.name %> played in from the dropdown
 </p>
+<br>
 <p>
 <%= button_to "Delete #{@actor.name}", actor_path(@actor), :method => :delete %>
 </p>
+<br>
 <p>
 	<%= link_to "Homepage", site_index_path %>
 </p>

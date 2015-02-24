@@ -2,13 +2,64 @@
 
 <ul>
 <% @movies.each do |movie| %>
-<%= movie.title %>
+<li>
+<%= movie.title %><%= movie.year %>
 <% end %>
-
-</ul>
+</li>
+</ul> 
 <p>
 <%= link_to "Edit #{@actor.name}", edit_actor_path %>
 </p>
 <p>
 <%= link_to "Back to All Actors", actors_path %>
 </p>
+
+
+<!-- <h1><%= @actor.name %></h1>
+
+
+
+<div>
+  <h2>Movies</h2>
+<ul>
+  <% @moviesin.each do |movie| %>
+    <li><%= movie.title %></li>
+  <% end %>
+  
+</ul>
+  <%= form_tag add_movie_path do |f|%>
+    <select name="movie_id">
+      <% @moviesremain.each do |flick| %>
+      <option value="<%=flick.id%>"><%=flick.title %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Add">
+  <% end %>
+</div>
+<br><br>
+<%= link_to "Edit", edit_actor_path(@actor) %>
+<%= button_to "Delete", actor_path(@actor), :method => :delete %>
+
+<br><br>
+
+<%= link_to "Back to Actors", actors_path %> -->
+
+
+
+  <!-- <ul>
+    <% @actor.movies.each do |role| %>
+    <li>
+      <%= link_to "#{role.title} (#{role.year})", movie_path(role) %>
+      <%= button_to "X", remove_movie_path(@actor, role), :method => :delete %>
+    </li>
+    <% end %>
+  </ul> -->
+  <!-- <%= form_tag add_movie_path do |f|%>
+    <select name="movie_id">
+      <% @movies.each do |flick| %>
+      <option value="<%=flick.id%>"><%=flick.title %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Add">
+  <% end %>
+</div> -->

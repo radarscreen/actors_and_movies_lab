@@ -34,4 +34,19 @@ class MoviesController < ApplicationController
     movie.destroy
     redirect_to movies_path
   end
+
+  def add_actor
+    @movie = Movie.find params[:id]
+    actor = Actor.find params[:id]
+    @movie.actors << actor
+    redirect_to movies_path(@movie)
+  end
+
+  def remove_actor
+    @movie = Movie.find params[:id]
+    actor = Actor.find params[:id]
+    movie.actors.destroy(actor)  #where is this non-instance variable coming from and why does it work?
+    redirect movie_path(movie)
+  end
+##do we need an instance variable to delete an actor?
 end

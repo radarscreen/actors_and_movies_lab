@@ -15,20 +15,42 @@ class ActorsController < ApplicationController
 
   def show
     @actor = Actor.find params[:id]
-    @movies = @actor.movies
+    @moviesin = @actor.movies
+    @movies = Movie.all
+    @moviesremain = @movies - @actor.movies
   end
 
   def edit
     @actor = Actor.find params[:id]
+    @actor_movies = @actor.movies.all
   end
 
   def update
+    form_data = params.require(:actor).permit(:name)
+    actor = Actor.find params[:id]
+    actor.update_attributes form_data
+    redirect_to actor_path(actor)
   end
 
   def destroy
     actor = Actor.find params[:id]
     actor.destroy
     redirect_to actors_path
+  end
+
+  def add_movie
+    @actor = Actor.find params[:id]
+    movie = Movie.find params [:id]
+    @actor.movies << movie  #movies is the name of the column in the table?
+    redirect_to actors_path(@actor)
+    #do you need to pass in a parameter to the actors_path(actor)?
+  end
+
+  def remove_movie
+    @actor = Actor.find params[:id]
+    movie = Movie.find params[:id]  #does this need to have [:movie_id]
+    actor.movies.destroy(movie) 
+    redirect_to actors_path(@actor)
   end
 
 end
