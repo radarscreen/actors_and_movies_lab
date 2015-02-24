@@ -1,0 +1,12 @@
+<h1>Add Your Actor!</h1>
+
+<%= form_for @actor do |f| %>
+<%= f.text_field :name, :placeholder => "Actor's Name" %>
+<%= f.submit "Add" "#{@actor.name}" %>
+<% end %>
+<br><br>
+<%= link_to "Back", actors_path %>
+
+<p>
+	<%= link_to "Homepage", site_index_path %>
+</p>

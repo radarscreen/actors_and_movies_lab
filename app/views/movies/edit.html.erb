@@ -1,7 +1,11 @@
-<h1>Edit</h1>
+<h1>Edit <%= @movie.title %></h1>
 
 <%= form_for @movie do |f| %>
   <%= f.text_field :title %>
   <%= f.text_field :year %>
   <%= f.submit "Update" %>
 <% end %>
+
+<p>
+	<%= link_to "Homepage", site_index_path %>
+</p>

@@ -1,0 +1,14 @@
+<h1>This is <%= @actor.name %></h1>
+
+<ul>
+<% @movies.each do |movie| %>
+<%= movie.title %>
+<% end %>
+
+</ul>
+<p>
+<%= link_to "Edit #{@actor.name}", edit_actor_path %>
+</p>
+<p>
+<%= link_to "Back to All Actors", actors_path %>
+</p>

@@ -1,0 +1,15 @@
+ <h1><%= @actor.name %></h1>
+
+
+collection_select
+
+
+<p>
+<%= link_to "Add another movie #{@actor.name} played in", new_movie_path %>
+</p>
+<p>
+<%= button_to "Delete #{@actor.name}", actor_path(@actor), :method => :delete %>
+</p>
+<p>
+	<%= link_to "Homepage", site_index_path %>
+</p>

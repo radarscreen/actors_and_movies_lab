@@ -1,0 +1,12 @@
+<h1>Here are our Actors:</h1>
+<ul>
+	<% @actors.each do |actor| %>
+	<li><%= link_to actor.name, actor %></li>
+	<% end %>
+</ul>
+
+<p><%= link_to "Add an Actor", new_actor_path %></p>
+
+<p>
+<%= link_to "Homepage", site_index_path %>
+</p>
