@@ -4,16 +4,34 @@
 
 
 <ul>
+<% @movie.actors.each do |actor| %>
+<li>
+<%= actor.name %>  <%= link_to "Delete", "/movies/#{params[:id]}/actors/#{actor.id}", method: "delete", data: {confirm: "Are you sure you want to delete this actor??"}%>
 
-<% @actors.each do |actor| %>
-<%= actor.name %>
+  
+</li>
 <% end %>
-
 </ul>
 
 <p>
 	<%= link_to "Add an actor to this movie", new_actor_path %>
+	<%= link_to "Delete", "movies/#{:id}/actors/#{:actor_id}"  %>
 </p>
+
+
+<form action= "/movies/<%= params[:id] %>/actors/new" method="POST">
+
+<select name = "actor_id">
+
+<% @actors.each do |actor| %>
+<option value=<%= actor.id %>><%= actor.name %></option>
+<% end %>
+
+</select>
+<input type="submit">
+</form>
+
+
 
 <p>
 <%= link_to "Edit", edit_movie_path(@movie) %>
