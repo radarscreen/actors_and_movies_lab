@@ -18,6 +18,25 @@
   <% end %>
 </div>
 
+<h1>Comments</h1>
+
+<ul id="comments">
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+</ul>
+
+<h2>New Comment</h2>
+<%= form_for [@actor, Comment.new] do |form| %>
+  <ol class="formList">
+    <li>
+      <%= form.label :content %>
+      <%= form.text_area :content, :rows => 5 %>
+    </li>
+    <li><%= submit_tag "Add comment" %></li>
+  </ol>
+<% end %>
+
 <%= link_to "Edit", edit_actor_path(@actor) %>
 <%= button_to "Delete", actor_path(@actor), :method => :delete %>
 <br><br>

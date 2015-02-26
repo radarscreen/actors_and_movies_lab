@@ -20,6 +20,25 @@
   <% end %>
 </div>
 
+<h1>Comments</h1>
+
+<ul id="comments">
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+</ul>
+
+<h2>New Comment</h2>
+<%= form_for [@movie, Comment.new] do |form| %>
+  <ol class="formList">
+    <li>
+      <%= form.label :content %>
+      <%= form.text_area :content, :rows => 5 %>
+    </li>
+    <li><%= submit_tag "Add comment" %></li>
+  </ol>
+<% end %>
+
 <%= link_to "Edit", edit_movie_path(@movie) %>
 <%= button_to "Delete", movie_path(@movie), :method => :delete %>
 <br><br>
